@@ -1,0 +1,16 @@
+{
+  "name": "comp3041j-miniproject1",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.29.3",
+  "scripts": {
+    "dev:presentation": "pnpm --dir services/presentation-service dev",
+    "dev:workflow": "pnpm --dir services/workflow-service dev",
+    "dev:data": "pnpm --dir services/data-service dev",
+    "dev:submission-fn": "pnpm --dir functions/submission-event-function dev",
+    "dev:processing-fn": "pnpm --dir functions/processing-function dev",
+    "dev:result-update-fn": "pnpm --dir functions/result-update-function dev",
+    "test": "pnpm --dir functions/processing-function test",
+    "lint": "node --check services/presentation-service/server.js && node --check services/workflow-service/server.js && node --check services/data-service/server.js && node --check functions/submission-event-function/server.js && node --check functions/processing-function/server.js && node --check functions/result-update-function/server.js"
+  }
+}

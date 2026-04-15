@@ -1,0 +1,31 @@
+services:
+  presentation-service:
+    build:
+      context: .
+      dockerfile: ./services/presentation-service/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      WORKFLOW_BASE_URL: http://workflow-service:3001
+    depends_on:
+      - workflow-service
+
+  workflow-service:
+    build:
+      context: .
+      dockerfile: ./services/workflow-service/Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      DATA_SERVICE_URL: http://data-service:3002
+    depends_on:
+      - data-service
+
+  data-service:
+    build:
+      context: .
+      dockerfile: ./services/data-service/Dockerfile
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./services/data-service/data:/app/data
