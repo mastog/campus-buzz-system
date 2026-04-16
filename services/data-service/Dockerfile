@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM crpi-3nvv9hswpq97xz8s.cn-beijing.personal.cr.aliyuncs.com/cloud_computing_lab/cloud_computing_lab:20-alpine
 WORKDIR /app
 RUN corepack enable
 COPY package.json pnpm-workspace.yaml ./
