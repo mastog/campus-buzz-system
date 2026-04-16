@@ -2,9 +2,9 @@ import express from "express";
 
 const app = express();
 const port = process.env.PORT || 3001;
-const dataServiceUrl = process.env.DATA_SERVICE_URL || "http://localhost:3002";
+const dataServiceUrl = process.env.DATA_SERVICE_URL || "http://172.17.193.121:3002";
 const submissionEventFunctionUrl =
-  process.env.SUBMISSION_EVENT_FUNCTION_URL || "http://localhost:7001/invoke";
+  process.env.SUBMISSION_EVENT_FUNCTION_URL || "http://submisson-event-ssimfaspzv.cn-beijing-vpc.fcapp.run";
 const functionAuthToken = process.env.FUNCTION_AUTH_TOKEN || "";
 
 app.use(express.json());
