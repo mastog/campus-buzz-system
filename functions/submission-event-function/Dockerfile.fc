@@ -1,0 +1,12 @@
+ARG NODE_IMAGE=docker.m.daocloud.io/library/node:20-alpine
+FROM ${NODE_IMAGE}
+ENV COREPACK_NPM_REGISTRY=https://registry.npmmirror.com
+ENV npm_config_registry=https://registry.npmmirror.com
+ENV PORT=9000
+WORKDIR /app
+RUN corepack enable
+COPY functions/submission-event-function/package.json ./
+RUN pnpm install --prod --frozen-lockfile=false
+COPY functions/submission-event-function ./
+EXPOSE 9000
+CMD ["pnpm", "start"]

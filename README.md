@@ -15,7 +15,7 @@ A hybrid event-submission system built with container services and serverless fu
 
 - `presentation-service` (container): serves the web UI and result pages
 - `workflow-service` (container): accepts submissions, stores records, triggers processing
-- `data-service` (container): stores and returns submission records, designed for `ApsaraDB RDS MySQL` in Alibaba Cloud
+- `data-service` (container): stores and returns submission records with file storage by default and optional MySQL support
 - `submission-event-function` (serverless): turns a new submission into a processing request
 - `processing-function` (serverless): applies validation, category, and priority rules
 - `result-update-function` (serverless): writes the computed result back to storage
@@ -58,5 +58,8 @@ A hybrid event-submission system built with container services and serverless fu
 
 ## Deployment
 
-- Local development can use file storage.
-- Alibaba Cloud deployment should switch `STORAGE_DRIVER=mysql`.
+- Service containers are built from `services/*/Dockerfile` and can be pushed to ACR for SAE deployment.
+- Function containers are built from `functions/*/Dockerfile.fc` and can be pushed to ACR for Function Compute custom-container deployment.
+- `data-service` uses file storage by default. Set `STORAGE_DRIVER=mysql` and the `MYSQL_*` variables only when MySQL storage is required.
+- `workflow-service` requires `DATA_SERVICE_URL` and `SUBMISSION_EVENT_FUNCTION_URL`.
+- `submission-event-function` requires `PROCESSING_FUNCTION_URL` and `RESULT_UPDATE_FUNCTION_URL`.

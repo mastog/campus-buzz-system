@@ -1,4 +1,7 @@
-FROM node:20-alpine
+ARG NODE_IMAGE=docker.m.daocloud.io/library/node:20-alpine
+FROM ${NODE_IMAGE}
+ENV COREPACK_NPM_REGISTRY=https://registry.npmmirror.com
+ENV npm_config_registry=https://registry.npmmirror.com
 WORKDIR /app
 RUN corepack enable
 COPY package.json pnpm-workspace.yaml ./
