@@ -284,7 +284,7 @@ app.get("/results/:id", async (req, res) => {
         </div>
         <p class="note">${submission.note || "Background processing is still running. This page will refresh automatically."}</p>
         <div class="actions">
-          <a class="button" href="/">Submit Another Event</a>
+          <a class="button" href="/">Return to Form</a>
           <div class="hint">${refreshing ? "Refreshing every second until the workflow completes." : "Final result stored successfully."}</div>
         </div>
       </section>
