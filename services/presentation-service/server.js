@@ -100,8 +100,8 @@ function pageShell(content, title = "Campus Buzz") {
         }
         .actions {
           border-top: 1px solid #999999;
-          margin-top: 14px;
-          padding-top: 10px;
+          margin-top: 12px;
+          padding-top: 12px;
         }
         .hint {
           color: #333333;
@@ -109,14 +109,21 @@ function pageShell(content, title = "Campus Buzz") {
           margin-top: 8px;
         }
         button, .button {
-          border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+          border-color: #ffffff #777777 #777777 #ffffff;
           border-style: solid;
           border-width: 2px;
-          background: #dcdcdc;
+          background: #e6e6e6;
           color: #000000;
-          padding: 5px 12px;
+          display: inline-block;
+          font: inherit;
+          line-height: 1.2;
+          padding: 4px 10px;
           text-decoration: none;
           cursor: pointer;
+        }
+        button:active, .button:active {
+          border-color: #777777 #ffffff #ffffff #777777;
+          padding: 5px 9px 3px 11px;
         }
         .status {
           display: inline-block;
@@ -156,6 +163,7 @@ function pageShell(content, title = "Campus Buzz") {
           border: 1px dashed #666666;
           background: #ffffff;
           margin-top: 12px;
+          margin-bottom: 0;
           padding: 8px;
           line-height: 1.45;
         }
