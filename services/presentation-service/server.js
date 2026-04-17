@@ -165,7 +165,7 @@ function pageShell(content, title = "Campus Buzz") {
           border: 1px dashed #666666;
           background: #ffffff;
           margin-top: 12px;
-          margin-bottom: 0;
+          margin-bottom: 12px;
           padding: 8px;
           line-height: 1.45;
         }
