@@ -38,15 +38,14 @@ function pageShell(content, title = "Campus Buzz") {
           font-size: 14px;
           color: var(--text);
           background: var(--page);
-          min-height: 100vh;
+          padding: 18px 12px;
         }
         * { box-sizing: border-box; }
         a { color: var(--link); }
         a:visited { color: var(--visited); }
         .shell {
           max-width: 820px;
-          margin: 18px auto;
-          padding: 0 12px;
+          margin: 0 auto;
         }
         .hero {
           background: #000080;
@@ -168,7 +167,7 @@ function pageShell(content, title = "Campus Buzz") {
           line-height: 1.45;
         }
         @media (max-width: 720px) {
-          .shell { margin-top: 8px; }
+          body { padding: 8px; }
           h1 { font-size: 24px; }
           .card small, .card strong {
             display: block;
