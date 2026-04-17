@@ -20,158 +20,152 @@ function pageShell(content, title = "Campus Buzz") {
       <title>${title}</title>
       <style>
         :root {
-          --bg: #07131d;
-          --panel: rgba(10, 28, 42, 0.88);
-          --panel-border: rgba(100, 206, 255, 0.18);
-          --text: #e8f7ff;
-          --muted: #90b6c8;
-          --accent: #23d7ff;
-          --accent-warm: #ff8c42;
-          --danger: #ff5f78;
-          --ok: #66f2a3;
+          --page: #c0c0c0;
+          --panel: #efefef;
+          --border-dark: #404040;
+          --border-light: #ffffff;
+          --text: #000000;
+          --link: #0000ee;
+          --visited: #551a8b;
+          --pending: #ffffcc;
+          --ok: #ccffcc;
+          --warn: #ffe0b3;
+          --bad: #ffcccc;
         }
-        * { box-sizing: border-box; }
         body {
           margin: 0;
-          font-family: "Segoe UI", sans-serif;
+          font-family: Verdana, Geneva, sans-serif;
+          font-size: 14px;
           color: var(--text);
-          background:
-            radial-gradient(circle at top, rgba(35, 215, 255, 0.14), transparent 30%),
-            linear-gradient(180deg, #061019 0%, #081824 100%);
+          background: var(--page);
           min-height: 100vh;
         }
+        * { box-sizing: border-box; }
+        a { color: var(--link); }
+        a:visited { color: var(--visited); }
         .shell {
-          max-width: 980px;
-          margin: 0 auto;
-          padding: 48px 20px 72px;
+          max-width: 820px;
+          margin: 18px auto;
+          padding: 0 12px;
         }
         .hero {
-          margin-bottom: 28px;
+          background: #000080;
+          border: 2px solid var(--border-dark);
+          color: #ffffff;
+          padding: 10px 12px;
         }
         .eyebrow {
-          color: var(--accent);
-          font-size: 12px;
-          letter-spacing: 0.3em;
-          text-transform: uppercase;
-          margin-bottom: 14px;
+          font-size: 11px;
+          margin-bottom: 6px;
         }
         h1 {
-          margin: 0 0 14px;
-          font-size: clamp(34px, 5vw, 56px);
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
+          margin: 0;
+          font-family: Georgia, "Times New Roman", serif;
+          font-size: 30px;
         }
         .lead {
-          margin: 0;
-          max-width: 760px;
-          color: var(--muted);
-          line-height: 1.7;
+          margin: 8px 0 0;
+          line-height: 1.45;
         }
         .panel {
           background: var(--panel);
-          border: 1px solid var(--panel-border);
-          border-radius: 24px;
-          padding: 24px;
-          backdrop-filter: blur(10px);
-          box-shadow: 0 24px 60px rgba(0, 0, 0, 0.26);
+          border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+          border-style: solid;
+          border-width: 2px;
+          margin-top: 12px;
+          padding: 14px;
         }
         .grid {
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 16px;
+          display: block;
         }
         .field {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-        }
-        .field.full {
-          grid-column: 1 / -1;
+          margin-bottom: 12px;
         }
         label {
-          font-size: 12px;
-          text-transform: uppercase;
-          letter-spacing: 0.18em;
-          color: var(--muted);
+          display: block;
+          font-weight: bold;
+          margin-bottom: 4px;
         }
         input, textarea {
           width: 100%;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 16px;
-          background: rgba(255, 255, 255, 0.04);
-          color: var(--text);
-          padding: 14px 16px;
+          border: 2px inset #d0d0d0;
+          background: #ffffff;
+          color: #000000;
           font: inherit;
+          padding: 5px;
         }
         textarea {
-          min-height: 160px;
+          min-height: 110px;
           resize: vertical;
         }
         .actions {
-          margin-top: 20px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 16px;
-          flex-wrap: wrap;
+          border-top: 1px solid #999999;
+          margin-top: 14px;
+          padding-top: 10px;
         }
         .hint {
-          color: var(--muted);
-          font-size: 14px;
+          color: #333333;
+          font-size: 12px;
+          margin-top: 8px;
         }
         button, .button {
-          appearance: none;
-          border: none;
-          border-radius: 999px;
-          padding: 14px 22px;
-          background: linear-gradient(90deg, var(--accent), var(--accent-warm));
-          color: #041119;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
+          border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+          border-style: solid;
+          border-width: 2px;
+          background: #dcdcdc;
+          color: #000000;
+          padding: 5px 12px;
           text-decoration: none;
           cursor: pointer;
         }
         .status {
-          display: inline-flex;
-          padding: 8px 12px;
-          border-radius: 999px;
-          font-size: 12px;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          font-weight: 700;
-          background: rgba(35, 215, 255, 0.12);
-          color: var(--accent);
+          display: inline-block;
+          border: 1px solid #000000;
+          background: var(--pending);
+          padding: 4px 8px;
+          font-weight: bold;
         }
-        .status.APPROVED { background: rgba(102, 242, 163, 0.16); color: var(--ok); }
-        .status.NEEDS-REVISION { background: rgba(255, 140, 66, 0.16); color: var(--accent-warm); }
-        .status.INCOMPLETE { background: rgba(255, 95, 120, 0.14); color: var(--danger); }
+        .status.APPROVED { background: var(--ok); }
+        .status.NEEDS-REVISION { background: var(--warn); }
+        .status.INCOMPLETE { background: var(--bad); }
         .kv {
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 14px;
-          margin-top: 20px;
+          display: table;
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 12px;
         }
         .card {
-          padding: 16px;
-          border-radius: 18px;
-          background: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          display: table-row;
         }
         .card small {
-          display: block;
-          color: var(--muted);
-          margin-bottom: 8px;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
+          display: table-cell;
+          width: 180px;
+          border: 1px solid #999999;
+          background: #d8d8d8;
+          font-weight: bold;
+          padding: 6px;
+        }
+        .card strong {
+          display: table-cell;
+          border: 1px solid #999999;
+          background: #ffffff;
+          font-weight: normal;
+          padding: 6px;
         }
         .note {
-          margin-top: 20px;
-          line-height: 1.7;
-          color: var(--muted);
+          border: 1px dashed #666666;
+          background: #ffffff;
+          margin-top: 12px;
+          padding: 8px;
+          line-height: 1.45;
         }
         @media (max-width: 720px) {
-          .grid, .kv { grid-template-columns: 1fr; }
+          .shell { margin-top: 8px; }
+          h1 { font-size: 24px; }
+          .card small, .card strong {
+            display: block;
+            width: 100%;
+          }
         }
       </style>
     </head>
@@ -185,11 +179,10 @@ app.get("/", (_req, res) => {
   res.send(
     pageShell(`
       <section class="hero">
-        <div class="eyebrow">Cloud Execution Models</div>
+        <div class="eyebrow">Campus notice board</div>
         <h1>Campus Buzz</h1>
         <p class="lead">
-          Submit a campus event, let the background workflow validate and classify it,
-          and then view the final review result with status, category, priority, and note.
+          Submit a campus event and check the review result after background processing.
         </p>
       </section>
       <section class="panel">
@@ -217,8 +210,8 @@ app.get("/", (_req, res) => {
             </div>
           </div>
           <div class="actions">
-            <div class="hint">Required fields are checked before category and priority rules are applied.</div>
             <button type="submit">Submit Event</button>
+            <div class="hint">Required fields are checked before category and priority rules are applied.</div>
           </div>
         </form>
       </section>
@@ -265,7 +258,7 @@ app.get("/results/:id", async (req, res) => {
     pageShell(
       `
       <section class="hero">
-        <div class="eyebrow">Submission Result</div>
+        <div class="eyebrow">Submission result</div>
         <h1>${submission.title || "Untitled Event"}</h1>
         <p class="lead">Submission ID: ${submission.id}</p>
       </section>
