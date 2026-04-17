@@ -120,6 +120,9 @@ function pageShell(content, title = "Campus Buzz") {
           text-decoration: none;
           cursor: pointer;
         }
+        .button:visited {
+          color: #000000;
+        }
         button:active, .button:active {
           border-color: #777777 #ffffff #ffffff #777777;
           padding: 5px 9px 3px 11px;
